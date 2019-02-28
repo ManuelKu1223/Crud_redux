@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -15,22 +16,16 @@ handleEdit = (e) => {
 }
 render() {
 return (
-<div>
-    <form onSubmit={this.handleEdit}>
-        <input required type="text" ref={(input) => this.getTitle = input}
-        defaultValue={this.props.post.title} placeholder="Enter Post Title" /><br /><br />
-        <textarea required rows="5" ref={(input) => this.getMessage = input}
-        defaultValue={this.props.post.message} cols="28" placeholder="Enter Post" /><br /><br />
-        <button>Update</button>
-    </form>
-    </div>
-    );
-  }
+<div key={this.props.post.id} className="post">
+  <form className="form" onSubmit={this.handleEdit}>
+    <input required type="text" ref={(input) => this.getTitle = input}
+    defaultValue={this.props.post.title} placeholder="Enter Post Title" /><br /><br />
+    <textarea required rows="5" ref={(input) => this.getMessage = input}
+    defaultValue={this.props.post.message} cols="28" placeholder="Enter Post" /><br /><br />
+    <button>Update</button>
+  </form>
+</div>
+);
 }
-
-const mapStateToProps = (state) => {
-    return {
-        posts: state
-    }
 }
-export default connect(mapStateToProps)(EditComponent);
+export default connect()(EditComponent);
